@@ -1,10 +1,5 @@
-<?php
-   require_once('header.php');
-?>
-    <div class="container mt-5">
-      <h2 class="text-center my-3">Регистрация на сайте</h2>
-      <div class="col-4 mx-auto">
-        <form action="/handlerReg.php" method='post'>
+<div class="col-sm-6 mx-auto">
+  <form action="/handlerReg" method='post'>
           <div class="mb-3">
             <input type="text" class="form-control" name="name" placeholder="Имя" required>
             </div>
@@ -21,8 +16,4 @@
             <input type="submit" class="form-control btn btn-primary" value="Зарегистрироваться">
             </div>
         </form>
-      </div>
-    </div>
-<?php
-   require_once('footer.php');
-?>
+</div>
