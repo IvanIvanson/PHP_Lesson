@@ -17,9 +17,9 @@
     }
     public static function addArticle($title, $content, $author){
       global $mysqli;
-      $mysqli->query("INSERT INTO `articles`(`title`, `content`, `author`) VALUES ('$title', '$content', '$author')");
-      header('Location: /');
-      exit;
+      $result = $mysqli->query("INSERT INTO `articles`(`title`, `content`, `author`) VALUES ('$title', '$content', '$author')");
+//      header('Location: /');
+      exit(json_encode(['result'=>'success']));
     }
       public static function changeArticle($id, $title, $content, $author){
         global $mysqli;
