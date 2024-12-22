@@ -39,7 +39,7 @@
          fetch('/addArticle', {
              method: "POST",
              body: formData
-         }).then(response => response.json)
+         }).then(response => response.json())
              .then(result => {
                  if (result.result == 'success'){
                      location.href = '/';

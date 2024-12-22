@@ -24,8 +24,14 @@
       public static function changeArticle($id, $title, $content, $author){
         global $mysqli;
         $mysqli->query("UPDATE `articles` SET `title`='$title',`content`='$content',`author`='$author' WHERE `id`='$id'");
-        header('Location: /blog/'.$id);
-        exit;
+//        header('Location: /blog/'.$id);
+          exit(json_encode(['result'=>'success']));
     }
+      public static function delArticle($id){
+          global $mysqli;
+          $mysqli->query("DELETE FROM `articles` WHERE `id`='$id'");
+//      header('Location: /');
+          exit(json_encode(['result'=>'success']));
+      }
   }
 ?>

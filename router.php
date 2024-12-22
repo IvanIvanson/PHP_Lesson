@@ -25,8 +25,7 @@ session_start();
     $title = "Личный кабинет";
     $content = file_get_contents('view/lk.php');
   }else if($uri[1] == 'getCurrentUser'){
-    echo User::getCurrentUser();
-    exit;
+      exit(User::getCurrentUser());
   }else if($uri[1] == ""){
     $title = "Главная";
     $content = file_get_contents('view/mainPage.php');
@@ -40,6 +39,7 @@ session_start();
     exit(Blog::getArticleById($id));
   }else if($uri[1] == "addArticle" and $_SERVER['REQUEST_METHOD']== 'POST'){
     /*echo $_SERVER['REQUEST_METHOD'];*/
+
    $title = $_POST['title'];
    $content = $_POST['content'];
    $author = $_POST['author'];
@@ -47,17 +47,19 @@ session_start();
   }else if($uri[1] == "addArticle" and $_SERVER['REQUEST_METHOD']== 'GET'){
     $title = "Добавление статьи";
     $content = file_get_contents('view/addArticle.php');
-  }else if ($uri[1] == 'changeArticles' and $_SERVER['REQUEST_METHOD']== 'POST'){
-      $id = $_POST['id'];
-      $title = $_POST['title'];
-      $content = $_POST['content'];
-      $author = $_POST['author'];
-      Blog::changeArticle($id, $title, $content, $author);
-  }else if ($uri[1] == 'changeArticles' and $_SERVER['REQUEST_METHOD']== 'GET'){
+  }else if($uri[1] == 'changeArticle' and $_SERVER['REQUEST_METHOD']== 'GET'){
       $title = "Редактировать статью";
       $content = file_get_contents('view/changeArticle.php');
+  }else if($uri[1] == 'changeArticle' and $_SERVER['REQUEST_METHOD']== 'POST'){
+      Blog::changeArticle($_POST['id'], $_POST['title'], $_POST['content'], $_POST['author']);
+  }else if($uri[1] == 'delArticle' and $_SERVER['REQUEST_METHOD']== 'GET'){
 
-  }else if ($uri[1] == 'contact'){
+      Blog::delArticle($_POST['id']);
+  }
+
+
+
+  else if ($uri[1] == 'contact'){
     $title = "Контакты";
     $content = file_get_contents('view/contact.php');
   }

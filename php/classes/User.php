@@ -42,14 +42,17 @@
     }
     public static function getCurrentUser(){
         global $mysqli;
+        $username = $_SESSION['username'];
+        $lastname = $_SESSION['lastname'];
         $id = $_SESSION['id'];
-        $result = $mysqli->query("SELECT * FROM `users` WHERE `id` = '$id'");
-        $row = $result->fetch_assoc();
+        $login = $_SESSION['email'];
+//        $result = $mysqli->query("SELECT * FROM `users` WHERE `id` = '$id'");
+//        $row = $result->fetch_assoc();
       $user = [
-        "name"=> $row['username'],
-        "lastname"=>$row['lastname'],
-        "email"=>$row['login'],
-        "id"=>$row['id'],
+        "name" => $username,
+        "lastname"=>$lastname,
+        "email"=>$login,
+        "id"=>$id,
         ];
       return json_encode($user);
     }
